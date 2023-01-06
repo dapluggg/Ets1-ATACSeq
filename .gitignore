@@ -1,0 +1,21 @@
+merged/*
+replace_peaks/*
+slurm_outputs/*
+<<<<<<< HEAD
+venn/*
+__pycache__/*
+.ipynb_checkpoints/*
+dds.rds
+deseq2/*
+counts/*
+temp/*
+=======
+tmp/*
+venn/*
+counts/*
+__pycache__/*
+venn_up_down/*
+deseq2/*
+deseq2_naive/*
+dds.rds
+>>>>>>> 3b2999f8eb69916458f4b9fa662c322abde97b2d
