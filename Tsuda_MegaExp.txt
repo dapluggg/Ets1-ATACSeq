@@ -84,7 +84,6 @@ CTLmem_Rep2_Browne_2016_Immunity	CTLmem_Rep2	/blue/m.pipkin/s.nagaraja/Browne_20
 KLRG1_d35_Rep1_Browne_2016_Immunity	KLRG1_d35_Rep1	/blue/m.pipkin/s.nagaraja/Browne_2016_Immunity	Browne_2016	PE	KLRG1_d35_Browne_2016_Immunity
 Exhausted_Rep1_Browne_2016_Immunity	Exhausted_Rep1	/blue/m.pipkin/s.nagaraja/Browne_2016_Immunity	Browne_2016	PE	Exhausted_Browne_2016_Immunity
 Exhausted_Rep3_Browne_2016_Immunity	Exhausted_Rep3	/blue/m.pipkin/s.nagaraja/Browne_2016_Immunity	Browne_2016	PE	Exhausted_Browne_2016_Immunity
-<<<<<<< HEAD
 Exhausted_Rep4_Browne_2016_Immunity	Exhausted_Rep4	/blue/m.pipkin/s.nagaraja/Browne_2016_Immunity	Browne_2016	PE	Exhausted_Browne_2016_Immunity
 D32_Spleen1	T8_D32_Spl1	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2022	SE	D32_Spleen
 D32_Spleen2	T8_D32_Spl2	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2023	SE	D32_Spleen
@@ -101,6 +100,3 @@ D32_Fat1	T8_D32_Fat1	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2033	SE	D
 D32_Fat2	T8_D32_Fat2	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2034	SE	D32_Fat
 D32_Liver1	T8_D32_Liv1	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2035	SE	D32_Liver
 D32_Liver2	T8_D32_Liv2	/blue/m.pipkin/s.nagaraja/Crowl_2022_Nature	Crowl_2036	SE	D32_Liver
-=======
-Exhausted_Rep4_Browne_2016_Immunity	Exhausted_Rep4	/blue/m.pipkin/s.nagaraja/Browne_2016_Immunity	Browne_2016	PE	Exhausted_Browne_2016_Immunity
->>>>>>> 3b2999f8eb69916458f4b9fa662c322abde97b2d
