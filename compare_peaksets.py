@@ -330,13 +330,16 @@ def find_motifs(logFC_dir, motif_dir, motif_length, genome):
         sample_name = logFC_file.split('/')[-1]
         sample_name = sample_name.replace('.csv', '')
         df = pd.read_csv(logFC_file)
-        df.rename( columns={'Unnamed: 0':'peak'}, inplace=True )
+        # print(df.columns)
+        # Rename the first column to 'Region' irrespective of what it is called in the input file
+        df.rename( columns={df.columns[0]:'Region'}, inplace=True )
+        # df.rename( columns={'Unnamed: 0':'peak'}, inplace=True )
         # df.rename( columns={'x':'peak'}, inplace=True )
-        df['chr'] = df['peak'].str.split('_').str[0] + '_' + df['peak'].str.split('_').str[1]
-        df['start'] = df['peak'].str.split('_').str[2]
-        df['end'] = df['peak'].str.split('_').str[3]
+        df['chr'] = df['Region'].str.split('_').str[0] + '_' + df['Region'].str.split('_').str[1]
+        df['start'] = df['Region'].str.split('_').str[2]
+        df['end'] = df['Region'].str.split('_').str[3]
         df['strand'] = '+'
-        df['name'] = df['peak']
+        df['name'] = df['Region']
         df = df[['name', 'chr', 'start', 'end', 'strand']]
         df.to_csv(f'HOMER/bed/{sample_name}.bed', sep='\t', index=False, header=False)
         return None
@@ -540,23 +543,28 @@ findMotifsGenome.pl {bed_path} {genome} {motif_dir}{file_string} -size {motif_le
         os.system(f'sbatch venn_intersections/HOMER/submissions/{file_string}.sh')
     return None
 
-def annotate_genes_near_peaks(counts_matrix, genome_sizes, genome_features,outfile):
+def annotate_genes_near_peaks(merged_peaks, genome_sizes, genome_features, outfile):
     '''
     Annotate genes that are within 100kb of peaks. 
     1. Use bedtools slop to extend peaks by 100kb
     2. intersect the extended peaks with the gene features
-    '''
-    if not os.path.exists('merged/'):
-        os.makedirs('merged/')
-    
+    '''    
     cmd = f'''#! /usr/bin/bash
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=64000
+#SBATCH --cpus-per-task=64
+#SBATCH --mem=128000
 #SBATCH --account=scripps-dept
 #SBATCH --qos=scripps-dept
-#SBATCH --time=4:00:00
+#SBATCH --time=15:00:00
+#SBATCH --output=slurm_outputs/%j.out
 module load bedtools;
-bedtools slop -i {counts_matrix} -g {genome_sizes} -b 100000 > {outfile};
-bedtools intersect -a {outfile} -b {genome_features} -wa -wb > merged/{outfile.split('/')[-1]}.merged;
+bedtools slop -i {merged_peaks} -g {genome_sizes} -b 100000 > merged/{outfile};
+bedtools intersect -a merged/{outfile} -b {genome_features} -wa -wb > merged/{outfile}.genes;
 '''
+    f = open(f'submissions/{outfile.split("/")[-1]}.sh', 'w+')
+    f.write(cmd)
+    f.close()
+    os.system(f'sbatch submissions/{outfile.split("/")[-1]}.sh')
+
     return None
+
+    # how do I find genes that are within a bed file? 
